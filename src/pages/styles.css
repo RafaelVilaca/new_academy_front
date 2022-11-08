@@ -1,0 +1,22 @@
+form {
+    margin-top: 110px !important;
+    width: 80%;
+    margin: 30px auto;
+}
+
+img {
+    border-radius: 10px;
+}
+
+/* media queries */
+@media only screen and (max-width: 767px) {
+    form {
+        margin-top: 110px !important;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    img {
+        border-radius: 0px;
+    }
+}
