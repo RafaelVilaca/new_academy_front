@@ -11,7 +11,6 @@ import { react_constants } from '../../components/constants'
 
 export default function TabelaUsuarios(){
     const navigate = useNavigate()
-
     const handleNewPress = () => {
         navigate('/users/formulario')
     }
@@ -33,15 +32,13 @@ export default function TabelaUsuarios(){
         window
         .matchMedia("(min-width: 767px)")
         .addEventListener('change', e => setIsDesktop( e.matches ));
-    }, []);
 
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
         fetch(`${react_constants["local_api"]}/user/listar`)
         .then(retorno => retorno.json())
         .then(retorno_convertido => setUsers(retorno_convertido))
-    }, [])
+    }, []);
+
+    const [users, setUsers] = useState([]);
 
     return(        
         <Form>
