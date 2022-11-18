@@ -6,6 +6,7 @@ import { useRoutes } from "react-router-dom"
 export const AppRoute = () => {
     let routes = useRoutes([
       { path: "/", element: <Home /> },
+      { path: "/home", element: <Home /> },
       { path: "/users", element: <TabelaUsuarios /> },
       { path: "/users/formulario", element: <Formulario /> },
       { path: "/users/formulario/:id", element: <Formulario /> },

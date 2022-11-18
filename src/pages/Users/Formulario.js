@@ -30,6 +30,7 @@ function Formulario(){
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
     const [type, setType] = useState("");
+    const [funcionario, setFuncionario] = useState(false);
     
     const [isDesktop, setIsDesktop] = useState(
         window.matchMedia("(min-width: 767px)").matches
@@ -45,6 +46,8 @@ function Formulario(){
                 .then(retorno => retorno.json())
                 .then(retorno_convertido => setUser(retorno_convertido))
         }
+
+        setFuncionario(localStorage.getItem("funcionario"))
     }, [id]);
 
     const onChangeValue = (e) => {
@@ -58,7 +61,7 @@ function Formulario(){
     const handleClose = () => {
         setOpen(false);
     };
-
+    
     const handleSubmit = () => {
         let cadastrarAlterar = "";
         let metodo = "";
@@ -84,15 +87,18 @@ function Formulario(){
                 setType("error");
             } else {
                 setMessage(messages["succesToSave"]);
-                setUser(userDefault)
                 setType("success");
+                handleCancel()
             }
             setOpen(true);
         })
     }
     
     const handleCancel = () => {
-        navigate('/users')
+        if(funcionario === "true")
+            navigate('/users')
+        else
+            navigate('/home')
     }
 
     return(
