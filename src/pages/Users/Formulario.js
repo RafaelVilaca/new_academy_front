@@ -120,10 +120,12 @@ function Formulario(){
                     {isDesktop && ( <TextField name="senha" value={user.senha} id="password" label="Senha" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "right" }} /> )}
                     {!isDesktop && ( <TextField name="senha" value={user.senha} id="password2" label="Senha" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }} /> ) }
                 </div>
-                <div style={{ marginTop: 30 }}>
-                    <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.funcionario} value={user.funcionario} name="funcionario" />} label="Usuário é funcionário?" />
-                    <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.ativo} value={user.ativo} name="ativo" />} label="Usuário ativo?" />
-                </div>
+                {funcionario === "true" && (
+                    <div style={{ marginTop: 30 }}>
+                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.funcionario} value={user.funcionario} name="funcionario" />} label="Usuário é funcionário?" />
+                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.ativo} value={user.ativo} name="ativo" />} label="Usuário ativo?" />
+                    </div>
+                )}
                 <div style={{ marginTop: 10 }}>
                     <div className="d-grid gap-2" style={{ maxWidth: 150, float: "left" }}>
                         <Button id="save" variant="success" style={{ minWidth: 120 }} onClick={handleSubmit}>
