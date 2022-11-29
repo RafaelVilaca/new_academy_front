@@ -94,7 +94,7 @@ export default function TabelaUsuarios(){
 
     return(        
         <Form>
-            <Button variant="primary" onClick={() => newPress} style={{ margin: "10px 0px", position: "relative", float: "right" }}>
+            <Button variant="primary" onClick={() => newPress()} style={{ margin: "10px 0px", position: "relative", float: "right" }}>
                 <AddIcon sx={{ fontSize: 20 }} />
                 {isDesktop && <span style={{ paddingTop: "1px" }}>&nbsp;Novo Usuário</span>}
             </Button>
@@ -108,7 +108,7 @@ export default function TabelaUsuarios(){
                         <th>Login</th>
                         <th>Funcionário?</th>
                         <th>Ativo?</th>
-                        <th>Actions</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody style={{ verticalAlign: 'middle' }}>
@@ -150,6 +150,7 @@ export default function TabelaUsuarios(){
                 secondArgument={secondArgument}
                 confirmation={() => {deletePress()}} 
                 onClose={() => {confirmationCloseDialog()}} 
+                title={'usuario'}
             />
             <SnackBarAlert open={openToast} type={type} message={message} handleClose={() => {closeToast()}} />  
         </Form>

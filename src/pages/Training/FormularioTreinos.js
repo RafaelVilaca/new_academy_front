@@ -13,49 +13,34 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { SnackBarAlert } from '../../components/snackBarAlert'
 import "../styles.css"
 
-const userDefault = {
+const trainingDefault = {
     codigo: 0,
-    nome: "",
-    documento: "",
-    login: "",
-    senha: "",
-    funcionario: false,
-    ativo: false
+    musculoFocal: "",
+    ativo: true
 }
 
-function Formulario(){
+function FormularioTraining(){
     const navigate = useNavigate();
     const { id } = useParams();
-    const [user, setUser] = useState(userDefault);
+    const [training, setTraining] = useState(trainingDefault);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
     const [type, setType] = useState("");
-    const [funcionario, setFuncionario] = useState(false);
-    
-    const [isDesktop, setIsDesktop] = useState(
-        window.matchMedia("(min-width: 767px)").matches
-    )
-    
-    useEffect(() => {
-        window
-        .matchMedia("(min-width: 767px)")
-        .addEventListener('change', e => setIsDesktop( e.matches ));
-    
-        if (id !== undefined && id !== null) {
-            fetch(`${react_constants["local_api"]}/user/buscar/${id}`)
-                .then(retorno => retorno.json())
-                .then(retorno_convertido => setUser(retorno_convertido))
-        }
 
-        setFuncionario(localStorage.getItem("funcionario"))
+    useEffect(() => {
+        if (id !== undefined && id !== null) {
+            fetch(`${react_constants["local_api"]}/training/buscar/${id}`)
+                .then(retorno => retorno.json())
+                .then(retorno_convertido => setTraining(retorno_convertido))
+        }
     }, [id]);
 
     const onChangeValue = (e) => {
-        setUser({...user, [e.target.name]:e.target.value})
+        setTraining({...training, [e.target.name]:e.target.value})
     }
 
     const onChangeValueSwitch = (e) => {
-        setUser({...user, [e.target.name]:e.target.checked})
+        setTraining({...training, [e.target.name]:e.target.checked})
     }
 
     const handleClose = () => {
@@ -72,9 +57,9 @@ function Formulario(){
             cadastrarAlterar = "cadastrar";
             metodo = "post";
         }
-        fetch(`${react_constants["local_api"]}/user/${cadastrarAlterar}`,{
+        fetch(`${react_constants["local_api"]}/training/${cadastrarAlterar}`,{
             method:metodo,
-            body:JSON.stringify(user),
+            body:JSON.stringify(training),
             headers:{
                 'Content-type':'application/json',
                 'Accept':'application/json'
@@ -95,37 +80,20 @@ function Formulario(){
     }
     
     const handleCancel = () => {
-        if(funcionario === "true")
-            navigate('/users')
-        else
-            navigate('/home')
+        navigate('/training')
     }
 
     return(
         <FormGroup>
             <Form style={{ padding: '0px 10px' }}>
                 <div>
-                    <TextField id="nome" name="nome" value={user.nome} label="Nome do usuário" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }}  />
-                    {isDesktop && ( 
-                        <TextField id="documento"  name="documento" value={user.documento} label="Documento do usuário" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "right" }} /> 
-                    )}
-                    {!isDesktop && ( 
-                        <TextField id="documento2"  name="documento" value={user.documento} label="Documento do usuário" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }} /> 
-                    ) }
+                    <TextField id="musculoFocal" name="musculoFocal" value={training.musculoFocal} label="Nome do Músculo Focal" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }}  />
                 </div>
                 <br />
                 <br />
-                <div>
-                    <TextField name="login" value={user.login} id="login" label="Login" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }} />
-                    {isDesktop && ( <TextField name="senha" value={user.senha} id="password" label="Senha" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "right" }} /> )}
-                    {!isDesktop && ( <TextField name="senha" value={user.senha} id="password2" label="Senha" variant="standard" onChange={onChangeValue} style={{ minWidth: 350, float: "left" }} /> ) }
-                </div>
-                {funcionario === "true" && (
                     <div style={{ marginTop: 30 }}>
-                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.funcionario} value={user.funcionario} name="funcionario" />} label="Usuário é funcionário?" />
-                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.ativo} value={user.ativo} name="ativo" />} label="Usuário ativo?" />
+                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={training.ativo} value={training.ativo} name="ativo" />} label="Treino ativo?" />
                     </div>
-                )}
                 <div style={{ marginTop: 10 }}>
                     <div className="d-grid gap-2" style={{ maxWidth: 150, float: "left" }}>
                         <Button id="save" variant="success" style={{ minWidth: 120 }} onClick={handleSubmit}>
@@ -146,4 +114,4 @@ function Formulario(){
     )
 }
 
-export default Formulario;
+export default FormularioTraining;

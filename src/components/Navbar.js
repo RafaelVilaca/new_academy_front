@@ -51,13 +51,35 @@ function NavbarComp(){
                                         Home
                         </Nav.Link>
                         {admin && (
-                            <Nav.Link href="/users"
-                                style={{ fontSize: 'x-large', 
-                                    color: 'black', 
-                                    fontWeight: 'bolder',
-                                    fontFamily: 'serif' }}>
-                                Usuários
-                            </Nav.Link>
+                            <>
+                                <Nav.Link href="/users"
+                                    style={{
+                                        fontSize: 'x-large',
+                                        color: 'black',
+                                        fontWeight: 'bolder',
+                                        fontFamily: 'serif'
+                                    }}>
+                                    Usuários
+                                </Nav.Link>
+                                <Nav.Link href="/training"
+                                    style={{
+                                        fontSize: 'x-large',
+                                        color: 'black',
+                                        fontWeight: 'bolder',
+                                        fontFamily: 'serif'
+                                    }}>
+                                    Treinos
+                                </Nav.Link>
+                                <Nav.Link href="/exercises"
+                                    style={{
+                                        fontSize: 'x-large',
+                                        color: 'black',
+                                        fontWeight: 'bolder',
+                                        fontFamily: 'serif'
+                                    }}>
+                                    Exercícios
+                                </Nav.Link>
+                            </>
                         )}
                         {!admin && (
                             <Nav.Link href={`/users/formulario/${id}`}
