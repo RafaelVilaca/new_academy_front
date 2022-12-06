@@ -91,9 +91,9 @@ function FormularioTraining(){
                 </div>
                 <br />
                 <br />
-                    <div style={{ marginTop: 30 }}>
-                        <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={training.ativo} value={training.ativo} name="ativo" />} label="Treino ativo?" />
-                    </div>
+                <div style={{ marginTop: 30 }}>
+                    <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={training.ativo} value={training.ativo} name="ativo" />} label="Treino ativo?" />
+                </div>
                 <div style={{ marginTop: 10 }}>
                     <div className="d-grid gap-2" style={{ maxWidth: 150, float: "left" }}>
                         <Button id="save" variant="success" style={{ minWidth: 120 }} onClick={handleSubmit}>

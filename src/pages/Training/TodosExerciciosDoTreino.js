@@ -92,7 +92,7 @@ function TodosExerciciosDoTreino(){
 
     return(
         <Form>
-            <h2>{treino}</h2>
+            <strong style={{ fontSize: "larger" }}>{treino}</strong>
             <Button variant="danger" onClick={handleBack} style={{ margin: "10px 0px", position: "relative", float: "right" }}>
                 <ArrowBackIcon sx={{ fontSize: 20 }} />
                 {isDesktop && <span style={{ paddingTop: "1px" }}>&nbsp;Voltar</span>}

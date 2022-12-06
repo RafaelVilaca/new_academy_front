@@ -103,7 +103,7 @@ export default function TabelaTraining(){
                 <AddIcon sx={{ fontSize: 20 }} />
                 {isDesktop && <span style={{ paddingTop: "1px" }}>&nbsp;Novo Treino</span>}
             </Button>
-            {/* <><p>{JSON.stringify(trainings)}</p></> */}
+            <strong style={{ fontSize: "larger" }}>Treinos</strong>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

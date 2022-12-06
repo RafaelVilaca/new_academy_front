@@ -98,7 +98,7 @@ export default function TabelaUsuarios(){
                 <AddIcon sx={{ fontSize: 20 }} />
                 {isDesktop && <span style={{ paddingTop: "1px" }}>&nbsp;Novo Usuário</span>}
             </Button>
-            {/* <><p>{JSON.stringify(users)}</p></> */}
+            <strong style={{ fontSize: "larger" }}>Usuários</strong>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

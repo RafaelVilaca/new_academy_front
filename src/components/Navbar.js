@@ -38,7 +38,8 @@ function NavbarComp(){
                     <img src={logo}
                         alt="Logo"
                         width="100"
-                        height="80" />
+                        height="80" 
+                        style={{ opacity: 1 }}/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ marginRight:'20px' }} />
                 <Navbar.Collapse id="basic-navbar-nav">

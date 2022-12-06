@@ -126,6 +126,8 @@ function Formulario(){
                         <FormControlLabel style={{ minWidth: "100%" }} control={<Switch onChange={onChangeValueSwitch} checked={user.ativo} value={user.ativo} name="ativo" />} label="Usuário ativo?" />
                     </div>
                 )}
+                <br />
+                <br />
                 <div style={{ marginTop: 10 }}>
                     <div className="d-grid gap-2" style={{ maxWidth: 150, float: "left" }}>
                         <Button id="save" variant="success" style={{ minWidth: 120 }} onClick={handleSubmit}>
